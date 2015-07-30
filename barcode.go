@@ -14,8 +14,6 @@ func init() {
 }
 
 func Run(doneChan chan string) {
-	log.Println("Starting")
-
 	options := []string{
 		"--nodisplay",
 		"/dev/video0",
@@ -35,8 +33,6 @@ func Run(doneChan chan string) {
 	if err != nil {
 		log.Fatal("zbarcam process failed: ", err)
 	}
-
-	log.Println("Exit")
 }
 
 func listenAndPipe(outCh <-chan string, doneCh chan<- string) {
