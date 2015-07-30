@@ -1,4 +1,4 @@
-package barcode
+package gobarcode
 
 import (
 	"gobarcode/reader"
