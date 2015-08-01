@@ -16,7 +16,7 @@ import (
 
 func main() {
 	strChan := make(chan string)
-	gobarcode.Run(strChan)
+	go gobarcode.Run(strChan)
 
 	for {
 		str := <-strChan
