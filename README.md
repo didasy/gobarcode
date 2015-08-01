@@ -10,17 +10,27 @@ You need to install `libzbar-dev` and `zbar-tools` before using this package.
 package main
 
 import (
-	"fmt"
-	"github.com/JesusIslam/gobarcode"
+	"../."
+	"../keyboard"
 )
 
 func main() {
 	strChan := make(chan string)
 	go gobarcode.Run(strChan)
 
+	kb, err := keyboard.New("scan", 10)
+	if err != nil {
+		panic(err)
+	}
+	defer kb.Destroy()
+
 	for {
 		str := <-strChan
-		fmt.Println(str)
+		err = kb.Type(str)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
+
 ```
