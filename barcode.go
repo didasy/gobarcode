@@ -16,6 +16,9 @@ func init() {
 func Run(doneChan chan string) {
 	options := []string{
 		"--nodisplay",
+		"--prescale=640x480",
+		"--set",
+		"*.x-density=0.1,y-density=0.1",
 		"/dev/video0",
 	}
 	cmd := exec.Command("zbarcam", options...)
